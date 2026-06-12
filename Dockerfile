@@ -5,7 +5,7 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ ./
-RUN ./node_modules/.bin/vite build
+RUN chmod +x ./node_modules/.bin/vite && ./node_modules/.bin/vite build
 
 # Stage 2: Python backend + serve frontend
 FROM python:3.11-slim
