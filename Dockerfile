@@ -1,11 +1,11 @@
 # Stage 1: Build React frontend
-FROM node:18-slim AS frontend-builder
+FROM node:18 AS frontend-builder
 
 WORKDIR /app/frontend
 COPY frontend/package*.json ./
-RUN npm install --include=dev
+RUN npm install
 COPY frontend/ ./
-RUN npx vite build
+RUN ./node_modules/.bin/vite build
 
 # Stage 2: Python backend + serve frontend
 FROM python:3.11-slim
